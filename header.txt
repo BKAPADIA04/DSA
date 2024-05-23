@@ -1,0 +1,9 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std; 
+#define vt vector
+#define pb push_back
+#define ll long long
+#define ld long double
+#define ar array
+#define print(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << endl; }
