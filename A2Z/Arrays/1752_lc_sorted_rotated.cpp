@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <iostream>
+using namespace std;
 class Solution {
 public:
     bool check(vector<int>& nums) {
