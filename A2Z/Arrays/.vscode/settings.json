@@ -68,6 +68,7 @@
         "unordered_set": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "gfg_longest_subarray(+ve and -ve)_with_sum_k": "c"
     }
 }
