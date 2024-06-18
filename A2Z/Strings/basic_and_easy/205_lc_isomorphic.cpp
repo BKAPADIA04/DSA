@@ -5,16 +5,20 @@ bool isIsomorphic(string s, string t) {
     int n = s.size();
     int m = t.size();
     if(n != m) return false;
-    set<char>set1; set<char>set2;
+    unordered_map <char,char> u_map;
+    vector<int>characters(256,-1);
     for(int i = 0;i < n;i++) {
-        set1.insert(s[i]);
-        set2.insert(t[i]);
+        if(u_map.find(s[i]) == u_map.end() && characters[t[i]] == -1) {
+            u_map[s[i]] = t[i];
+            characters[t[i]] = 1;
+        }
+        else {
+            if(u_map[s[i]] != t[i]) return false;
+        }
     }
-
-    if(set1.size() == set2.size()) return true;
-    return false;
+    return true;
 }
 
 int main() {
-    cout << isIsomorphic("egg","add") << endl;
+    cout << isIsomorphic("pijthbsfy","fvladzpbf") << endl;
 }
