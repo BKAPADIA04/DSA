@@ -6,22 +6,10 @@ bool rotateString(string s, string goal) {
     int g_size = goal.size();
     if(s_size != g_size) return false;
 
-    char ch = s[0]; int rotation = 0;
-    for(int i = 0;i < g_size;i++) {
-        if(goal[i] == ch) {
-            rotation = i;break;
-        }
-    }     
+    string temp = s + s;
+    return temp.find(goal) != string::npos;
 
-    string temp = goal;
-    reverse(temp.begin(),temp.begin() + rotation);
-    reverse(temp.begin()+rotation,temp.end());
-    reverse(temp.begin(),temp.end());
-
-    if(s == temp) {
-        return true;
-    }
-    return false;
+    // This compares the result of find with a special value called string::npos. npos (not found position) is a constant defined within the <string> library and represents a value that indicates the substring was not found. So, this part checks if the result is not equal to npos.
 }
 
 int main() {
