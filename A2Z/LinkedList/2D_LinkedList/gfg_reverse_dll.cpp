@@ -24,9 +24,21 @@ public:
 
 Node* reverseDLL(Node * head)
 {
-    Node * temp = head;
-    while(temp) {
-        temp->prev = temp->next;
+    if (!head || !head->next) { 
+        return head;
     }
+    Node * curr = head;
+    Node * temp = nullptr;
+    while(curr) {
+        temp = curr->prev;
+        curr->prev = curr->next;
+        curr->next = temp;
+        curr = curr->prev;
+    }
+    curr = head;
+    while(curr->prev) {
+        curr = curr->prev;
+    }
+    head = curr;
     return head;
 }
