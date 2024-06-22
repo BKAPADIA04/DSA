@@ -56,6 +56,22 @@ ListNode* reverseList(ListNode* head) {
     return head;
 }
 
+// ListNode * prev = nullptr;
+
+ListNode* reverseList_RecursiveCheck(ListNode * head,ListNode * prev) {
+    if(head == nullptr) return prev;
+    ListNode * curr = head;
+    ListNode * lead = curr->next;
+    curr->next = prev;
+    head = reverseList_RecursiveCheck(lead,curr);
+    return head;
+}
+
+ListNode* reverseList_Recursive(ListNode* head) {
+    
+    return reverseList_RecursiveCheck(head,nullptr);
+}
+
 void print(ListNode * head) {
     ListNode * temp =  head;
     while (temp)
@@ -69,7 +85,8 @@ void print(ListNode * head) {
 int main() {
     vector<int>arr = {1,2,3,4,5};
     ListNode * head = constructLL(arr);
-    head = reverseList(head);
+    // head = reverseList(head);
+    head = reverseList_Recursive(head);
     print(head);
 }
 
