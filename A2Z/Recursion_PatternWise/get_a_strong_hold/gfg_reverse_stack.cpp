@@ -15,7 +15,7 @@ void insert_at_bottom(stack<int>&st,int x) {
         int ele = st.top();
         st.pop();
         insert_at_bottom(st, x);
-
+        
         st.push(ele);
     }
 }
