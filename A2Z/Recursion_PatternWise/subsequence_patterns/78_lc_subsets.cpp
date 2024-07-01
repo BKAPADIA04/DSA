@@ -44,4 +44,6 @@ int main() {
         }
         cout << endl;
     }
+    string f = "";
+    solve(0,"123",f);
 }
