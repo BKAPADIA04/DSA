@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stack": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
     }
 }
