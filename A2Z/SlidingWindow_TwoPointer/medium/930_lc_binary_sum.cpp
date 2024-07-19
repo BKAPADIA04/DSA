@@ -42,6 +42,7 @@ int numSubarraysWithSum_(vector<int>& nums, int goal) {
     return atMost(nums,goal)-atMost(nums,goal-1);
 }
 
+
 int main() {
     vector<int>nums = {1,0,1,0,1};
     cout << numSubarraysWithSum(nums,2) << endl;
