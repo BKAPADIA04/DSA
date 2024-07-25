@@ -8,11 +8,11 @@ class Heap {
         int size;
 
         Heap() {
-            arr[0] = 45;
-            arr[1] = 18;
-            arr[2] = 10;
-            arr[3] = 93;
-            size = 4; 
+            // arr[0] = 45;
+            // arr[1] = 18;
+            // arr[2] = 10;
+            // arr[3] = 93;
+            size = 0; 
         }
 
         void print() {
@@ -54,6 +54,20 @@ class Heap {
                 swap(arr[i],arr[c]);
             }
         }
+
+        void TopDownMinHeapify(int arr[],int n,int i) {
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            int smallest = i;
+
+            if(left < n && arr[left] < arr[i]) smallest = left;
+            if(right < n && arr[right] < arr[smallest]) smallest = right;
+
+            if(smallest != i) {
+                swap(arr[i],arr[smallest]);
+                TopDownMinHeapify(arr,n,smallest);
+            }
+        }
         
         void insert(int val) {
             int index = size;
@@ -67,7 +81,8 @@ class Heap {
             if(size == 0) return;
             arr[0] = arr[size-1];
             size = size - 1;
-            TopDownHeapify(0);
+            // TopDownHeapify(0);
+            TopDownMinHeapify(arr,size,0);
             print();
         }
 
@@ -103,20 +118,21 @@ class Heap {
 
 int main() {
     Heap h;
-    // h.insert(10);
-    // h.insert(20);
+    h.insert(10);
+    h.insert(20);
     // h.increaseKey(1,30);
     // h.decreaseKey(1,8);
-    // h.deletefromheap();
-    // h.insert(5);
+    h.deletefromheap();
+    h.insert(5);
+    h.deletefromheap();
     // h.insert(100);
     // h.insert(7);
     // h.deletefromheap();
     // h.deletefromheap();
     // h.deletefromheap();
     // h.deletefromheap();
-    h.BuildHeap();
-    h.insert(7);
+    // h.BuildHeap();
+    // h.insert(7);
     // h.deletefromheap();
     // h.deletefromheap();
     // h.deletefromheap();
