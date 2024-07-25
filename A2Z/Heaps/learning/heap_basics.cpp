@@ -92,7 +92,7 @@ class Heap {
 
         void HeapSort() {
             int temp = size;
-            for(int i = 0;i < temp;i++) {
+            for(int i = 0;i < temp;i++) {   
                 cout << arr[0] << endl;
                 deletefromheap();
             }
