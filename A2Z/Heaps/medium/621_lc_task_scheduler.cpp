@@ -11,7 +11,7 @@ int leastInterval(vector<char>& tasks, int n) {
         freq[tasks[i] - 'A']++;
     }
 
-    for(int i = 0;i < tasks.size();i++) {
+    for(int i = 0;i < 26;i++) {
         if(freq[i] >= 1) pq.push({freq[i],0});
     }
     int time = 0;
