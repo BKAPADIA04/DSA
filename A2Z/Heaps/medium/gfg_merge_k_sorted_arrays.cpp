@@ -12,7 +12,7 @@ vector<int> mergeKArrays(vector<vector<int>> arr, int k)
     }
     vector<int>ks(k,0);
     int count = 0;
-    while(count <= (k*k)) {
+    while(count <= (k*k)) { // use while(!pq.empty()) for general
         if(pq.empty()) break;
         int ele = pq.top().first;
         int i = pq.top().second;
