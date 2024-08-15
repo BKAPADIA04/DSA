@@ -11,7 +11,12 @@ using namespace std;
 #define cf(i,s,n) for(int i=s;i<=n;i++)
 void yes() { cout<<"YES"<<endl; }
 void no() { cout<<"NO"<<endl; }
-
+void presum(vt<int>&nums) {
+    vt<ll>presum(nums.size()+1,0);
+    for(int i = 1;i <= nums.size();i++) {
+        presum[i] = presum[i-1] + nums[i];
+    }
+}
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
