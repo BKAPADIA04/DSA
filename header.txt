@@ -12,6 +12,7 @@ using namespace std;
 #define cf(i,s,n) for(int i=s;i<=n;i++)
 void yes() { cout<<"YES"<<endl; }
 void no() { cout<<"NO"<<endl; }
+const int n1=1e9+7;
 
 int main() {
     ios_base::sync_with_stdio(0);
