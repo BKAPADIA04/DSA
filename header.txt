@@ -15,6 +15,23 @@ void no() { cout<<"NO"<<endl; }
 const int n1=1e9+7;
 #define endl "\n"
 
+bool isPerfectSquare(long long x)
+{
+    // Find floating point value of
+    // square root of x.
+    if (x >= 0) {
+
+        long long sr = sqrt(x);
+        
+        // if product of square root 
+        //is equal, then
+        // return T/F
+        return (sr * sr == x);
+    }
+    // else return false if n<0
+    return false;
+}
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
