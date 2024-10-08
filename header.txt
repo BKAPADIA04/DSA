@@ -12,7 +12,7 @@ using namespace std;
 #define cf(i,s,n) for(int i=s;i<=n;i++)
 void yes() { cout<<"YES"<<endl; }
 void no() { cout<<"NO"<<endl; }
-const int n1=1e9+7;
+#define MOD 1000000007
 #define endl "\n"
 
 bool isPerfectSquare(long long x)
@@ -30,6 +30,25 @@ bool isPerfectSquare(long long x)
     }
     // else return false if n<0
     return false;
+}
+
+ll binpow(ll x, ll y)
+{
+    ll ans = 1;
+ 
+    while (y > 0)
+    {
+        if (y % 2 == 1)
+            ans *= x;
+ 
+        x = x * x;
+        y = y / 2;
+ 
+        x %= MOD;
+        ans %= MOD;
+    }
+ 
+    return ans;
 }
 
 int main() {
