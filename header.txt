@@ -14,6 +14,7 @@ void yes() { cout<<"YES"<<endl; }
 void no() { cout<<"NO"<<endl; }
 #define MOD 1000000007
 #define endl "\n"
+const ll INF = 0x3f3f3f3f3f3f3f3f;
 
 bool isPerfectSquare(long long x)
 {
@@ -56,10 +57,10 @@ int main() {
     cin.tie(0);
     cout.tie(0);
 
-    int t; cin >> t;
+    ll t; cin >> t;
     while(t--) {
-        int n; cin >> n;
-        vt<int>nums(n);
+        ll n; cin >> n;
+        vt<ll>nums(n);
         f(i,0,n) {
             cin >> nums[i];
         }
