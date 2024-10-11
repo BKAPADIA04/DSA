@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std; 
+#define vt vector
+#define pb push_back
+#define ll long long
+#define ld long double
+#define ar array
+#define print(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << endl; }
+#define print_h(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << " "; }
+#define f(i,s,n) for(int i=s;i<n;i++)
+#define r(i,s,n) for(int i=n-1;i>=0;i--)
+#define cf(i,s,n) for(int i=s;i<=n;i++)
+void yes() { cout<<"YES"<<endl; }
+void no() { cout<<"NO"<<endl; }
+#define MOD 1000000007
+#define endl "\n"
+
+bool isPerfectSquare(long long x)
+{
+    // Find floating point value of
+    // square root of x.
+    if (x >= 0) {
+
+        long long sr = sqrt(x);
+        
+        // if product of square root 
+        //is equal, then
+        // return T/F
+        return (sr * sr == x);
+    }
+    // else return false if n<0
+    return false;
+}
+
+ll binpow(ll x, ll y)
+{
+    ll ans = 1;
+ 
+    while (y > 0)
+    {
+        if (y % 2 == 1)
+            ans *= x;
+ 
+        x = x * x;
+        y = y / 2;
+ 
+        x %= MOD;
+        ans %= MOD;
+    }
+ 
+    return ans;
+}
+
+void generate(string str,int low,int high,set<string>&answers) {
+    if(low == high) {
+        answers.insert(str);
+        return;
+    }
+    else {
+        for(int i = low; i <= high;i++) {
+            swap(str[i],str[low]);
+            generate(str,low + 1,high,answers);
+            swap(str[i],str[low]);
+        }
+    }
+}
+
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    string str; cin >> str;
+    // sort(str.begin(),str.end()); // not needed as set sorts it automatically
+    set<string>answers;
+    generate(str,0,str.size()-1,answers);
+    cout << answers.size() << endl;
+    print(answers);
+}
