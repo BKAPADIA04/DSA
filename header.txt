@@ -7,9 +7,9 @@ using namespace std;
 #define ar array
 #define print(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << endl; }
 #define print_h(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << " "; }
-#define f(i,s,n) for(int i=s;i<n;i++)
-#define r(i,s,n) for(int i=n-1;i>=0;i--)
-#define cf(i,s,n) for(int i=s;i<=n;i++)
+#define f(i,s,n) for(ll i=s;i<n;i++)
+#define r(i,s,n) for(ll i=n-1;i>=0;i--)
+#define cf(i,s,n) for(ll i=s;i<=n;i++)
 void yes() { cout<<"YES"<<endl; }
 void no() { cout<<"NO"<<endl; }
 #define MOD 1000000007
