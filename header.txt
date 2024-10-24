@@ -15,6 +15,7 @@ void no() { cout<<"NO"<<endl; }
 #define MOD 1000000007
 #define endl "\n"
 const ll INF = 0x3f3f3f3f3f3f3f3f;
+#define p pair<ll,ll>
 
 bool isPerfectSquare(long long x)
 {
