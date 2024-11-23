@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std; 
+#define vt vector
+#define pb push_back
+#define ll long long
+#define ld long double
+#define ar array
+#define print(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << endl; }
+#define print_h(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << " "; }
+#define f(i,s,n) for(ll i=s;i<n;i++)
+#define r(i,s,n) for(ll i=n-1;i>=0;i--)
+#define cf(i,s,n) for(ll i=s;i<=n;i++)
+void yes() { cout<<"YES"<<endl; }
+void no() { cout<<"NO"<<endl; }
+#define MOD 1000000007
+#define endl "\n"
+const ll INF = 0x3f3f3f3f3f3f3f3f;
+#define p pair<ll,ll>
+
+bool isPerfectSquare(long long x)
+{
+    // Find floating point value of
+    // square root of x.
+    if (x >= 0) {
+
+        long long sr = sqrt(x);
+        
+        // if product of square root 
+        //is equal, then
+        // return T/F
+        return (sr * sr == x);
+    }
+    // else return false if n<0
+    return false;
+}
+
+ll binpow(ll x, ll y)
+{
+    ll ans = 1;
+ 
+    while (y > 0)
+    {
+        if (y % 2 == 1)
+            ans *= x;
+ 
+        x = x * x;
+        y = y / 2;
+ 
+        x %= MOD;
+        ans %= MOD;
+    }
+ 
+    return ans;
+}
+
+void answer(vector<ll>&nums,vector<vector<ll> >&dp,set<ll>&output,ll index,ll sum) {
+    if(index == nums.size()) {
+        if(sum != 0)
+            output.insert(sum);
+        return;
+    }
+    // if(dp[index][sum] != -1) return;
+
+    // dp[index][sum] = 1;
+    answer(nums,dp,output,index+1,sum);
+    answer(nums,dp,output,index+1,sum + nums[index]);
+    
+}
+
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    ll t = 1;
+    while(t--) {
+        ll n; cin >> n;
+        vt<ll>nums(n);
+        f(i,0,n) {
+            cin >> nums[i];
+        }
+        vector<vector<ll> >dp;
+        set<ll>output;
+        answer(nums,dp,output,0,0);
+        cout << output.size() << endl;
+        print_h(output);
+    }
+
+}

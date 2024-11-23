@@ -1,0 +1,99 @@
+#include <bits/stdc++.h>
+using namespace std; 
+#define vt vector
+#define pb push_back
+#define ll long long
+#define ld long double
+#define ar array
+#define print(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << endl; }
+#define print_h(v) for(auto it=v.begin();it!=v.end();it++) { cout << *it << " "; }
+#define f(i,s,n) for(ll i=s;i<n;i++)
+#define r(i,s,n) for(ll i=n-1;i>=0;i--)
+#define cf(i,s,n) for(ll i=s;i<=n;i++)
+void yes() { cout<<"YES"<<endl; }
+void no() { cout<<"NO"<<endl; }
+#define MOD 1000000007
+#define endl "\n"
+const ll INF = 0x3f3f3f3f3f3f3f3f;
+#define p pair<ll,ll>
+
+bool isPerfectSquare(long long x)
+{
+    // Find floating point value of
+    // square root of x.
+    if (x >= 0) {
+
+        long long sr = sqrt(x);
+        
+        // if product of square root 
+        //is equal, then
+        // return T/F
+        return (sr * sr == x);
+    }
+    // else return false if n<0
+    return false;
+}
+
+ll binpow(ll x, ll y)
+{
+    ll ans = 1;
+ 
+    while (y > 0)
+    {
+        if (y % 2 == 1)
+            ans *= x;
+ 
+        x = x * x;
+        y = y / 2;
+ 
+        x %= MOD;
+        ans %= MOD;
+    }
+ 
+    return ans;
+}
+
+int minAnswer(vector<ll>&nums,int target,int index,vector<vector<ll> >&dp) {
+    if(index == 0) {
+        if(target % nums[0] == 0) return target / nums[0];
+        else return 1e9;
+    }
+
+    if(dp[index][target] != -1) return dp[index][target];
+
+    int notTaken = 0 + minAnswer(nums,target,index-1,dp);
+
+    int taken = 1e9;
+    if(nums[index] <= target) {
+        taken = 1 + minAnswer(nums,target - nums[index],index,dp);
+    }
+
+    return dp[index][target] = min(notTaken,taken);
+
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    ll n; cin >> n; ll amt; cin >> amt;
+    vt<ll>nums(n);
+    f(i,0,n) {
+        cin >> nums[i];
+    }
+
+    // vector<vector<ll> >dp(n,vector<ll>(amt + 1,-1));
+
+    // cout << minAnswer(nums,amt,n-1,dp) << endl;
+
+    if(amt == 0) cout <<  0  << endl;
+        vector<ll>dp(amt + 1,amt + 1);
+        dp[0] = 0;
+        for(ll coin:nums) {
+            for(ll i = coin; i <= amt;i++) {
+                dp[i] = min(dp[i],dp[i-coin] + 1);
+            }
+        }
+        dp[amt] = dp[amt] == amt + 1 ? -1 : dp[amt];
+        cout << dp[amt] << endl;
+}
