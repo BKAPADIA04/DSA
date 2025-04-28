@@ -31,6 +31,7 @@ public:
         // long long window = i - j;
         // answer += 1ll * (window * (window + 1))/2;
 
+        O(nlogn)
         for(i = 1; i <= n;i++) {
             int low = i;
             int high = n;
@@ -51,3 +52,55 @@ public:
         return answer;
     }
 };
+
+O(n)
+class Solution {
+public:
+    long long countSubarrays(vector<int>& nums, long long k) {
+        int n = nums.size();
+        long long sum = 0;
+        long long score = 0;
+        int l=0,r=0;
+        long long ans = 0;
+
+        while(r<n){
+            sum += nums[r];
+            score = sum * (r-l+1);
+
+            while(l<r && score >= k){
+                sum -= nums[l];
+                l++;
+                score = sum * (r-l+1);
+            }
+
+            if(score < k){
+                ans += r-l+1;
+            }
+            r++;
+        }
+
+        return ans;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
