@@ -14,6 +14,7 @@ int longestCommonSubstr(string str1, string str2) {
                 dp[i][j] = 1 + dp[i-1][j-1];
                 maxi = max(dp[i][j],maxi);
             }
+            else {dp[i][j] = 0;}
         }
     }
     return maxi;
