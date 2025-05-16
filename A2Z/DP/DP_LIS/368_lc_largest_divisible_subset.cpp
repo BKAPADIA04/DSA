@@ -1,38 +1,38 @@
 class Solution {
 public:
 
-    void print(vector<int>dp) {
-        for(auto it:dp) cout << it << " ";
-        cout << endl;
-    }
+    // void print(vector<int>dp) {
+    //     for(auto it:dp) cout << it << " ";
+    //     cout << endl;
+    // }
 
-    void check(vector<int>&nums,vector<int>&dp,int index,int prev_index,vector<int>&answer,vector<int>&temp) {
-        if(index == nums.size()) {
-            if(answer.size() < temp.size()) {
-                answer = temp;
-            }
-            // print(answer);
-            return;
-        }
+    // void check(vector<int>&nums,vector<int>&dp,int index,int prev_index,vector<int>&answer,vector<int>&temp) {
+    //     if(index == nums.size()) {
+    //         if(answer.size() < temp.size()) {
+    //             answer = temp;
+    //         }
+    //         // print(answer);
+    //         return;
+    //     }
 
-        // if(dp[index][prev_index+1] != -1) return;
-        // not taken
-        check(nums,dp,index+1,prev_index,answer,temp);
+    //     // if(dp[index][prev_index+1] != -1) return;
+    //     // not taken
+    //     check(nums,dp,index+1,prev_index,answer,temp);
 
-        // taken
-        // int i;
-        // for(i = 0;i < temp.size();i++) {
-        //     if(nums[index] % temp[i] != 0 && temp[i] % nums[index] != 0 ) break;
-        // }
-        if((temp.size() == 0 || nums[index] % temp.back() == 0)  && dp[index] < temp.size()+1) {
-            cout << "hi" << endl;
-            dp[index] = temp.size()+1;
-            temp.push_back(nums[index]);
-            check(nums,dp,index+1,index,answer,temp);
-            temp.pop_back();
-        }
-        // dp[index][prev_index+1] = answer.size();
-    }
+    //     // taken
+    //     // int i;
+    //     // for(i = 0;i < temp.size();i++) {
+    //     //     if(nums[index] % temp[i] != 0 && temp[i] % nums[index] != 0 ) break;
+    //     // }
+    //     if((temp.size() == 0 || nums[index] % temp.back() == 0)  && dp[index] < temp.size()+1) {
+    //         cout << "hi" << endl;
+    //         dp[index] = temp.size()+1;
+    //         temp.push_back(nums[index]);
+    //         check(nums,dp,index+1,index,answer,temp);
+    //         temp.pop_back();
+    //     }
+    //     // dp[index][prev_index+1] = answer.size();
+    // }
     
     vector<int> largestDivisibleSubset(vector<int>& nums) {
         // int n = nums.size();
@@ -79,4 +79,40 @@ public:
 
         return answer;
     }
+
+//     vector<int> nums;
+// vector<vector<vector<int>>> dp;
+// int n;
+
+// vector<int> solve(int index, int prev_index) {
+//     if (index == n) return {};
+
+//     if (dp[index][prev_index + 1].size() != 0) return dp[index][prev_index + 1];
+
+//     // Not take current
+//     vector<int> not_take = solve(index + 1, prev_index);
+
+//     vector<int> take;
+//     if (prev_index == -1 || nums[index] % nums[prev_index] == 0) {
+//         take = solve(index + 1, index);
+//         take.push_back(nums[index]);
+//     }
+
+//     // Store the longer result in dp
+//     if (take.size() > not_take.size())
+//         return dp[index][prev_index + 1] = take;
+//     else
+//         return dp[index][prev_index + 1] = not_take;
+// }
+
+// vector<int> largestDivisibleSubset(vector<int>& input) {
+//     nums = input;
+//     sort(nums.begin(), nums.end());
+//     n = nums.size();
+//     dp = vector<vector<vector<int>>>(n, vector<vector<int>>(n + 1));
+
+//     vector<int> res = solve(0, -1);
+//     reverse(res.begin(), res.end());  // reverse to make it increasing (optional)
+//     return res;
+// }
 };
