@@ -1,0 +1,58 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+
+    pair<ListNode*,ListNode*>segregate(ListNode * head) {
+        if(head == nullptr || head->next == nullptr) return {head, nullptr};
+
+        ListNode * slow = head;
+        ListNode * prev = nullptr;
+        ListNode * fast = head;
+
+        while(fast != nullptr && fast->next != nullptr) {
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        if(prev) prev->next = nullptr;
+        return {head,slow};
+    }
+
+    ListNode * revLL(ListNode * head) {
+        ListNode * curr = head;
+        ListNode * prev = nullptr;
+        while(curr) {
+            ListNode * lead = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = lead;
+        }
+        return prev;
+    }
+
+    int pairSum(ListNode* head) {
+        pair<ListNode*,ListNode*>l = segregate(head);
+        ListNode * head1 = l.first;
+        ListNode * head2 = l.second;
+        head2 = revLL(head2);
+
+        ListNode * temp1 = head1;
+        ListNode * temp2 = head2;
+        int maxi = 0;
+        while(temp1 && temp2) {
+            maxi = max(maxi,temp1->val + temp2->val);
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+        return maxi;
+    }
+};
