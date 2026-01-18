@@ -2,6 +2,7 @@
 class Solution {
 public:
 
+
     ll mod = 1e9 + 7;
     ll n;
     ll t1; ll t2;
