@@ -1,5 +1,6 @@
 class Solution {
 public:
+
     int monotoneIncreasingDigits(int n) {
         string str = to_string(n);
         int len = str.size();
