@@ -7,7 +7,7 @@ public:
         vector<int>last(n,-1);
         for(int i = m - 1, j = n - 1;i >= 0 && j >= 0;i--) {
             if(word1[i] == word2[j]) {
-                last[j] = i;
+                last[j] = i; 
                 j--;
             }
         }
