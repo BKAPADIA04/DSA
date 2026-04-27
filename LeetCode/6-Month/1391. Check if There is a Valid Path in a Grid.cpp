@@ -1,5 +1,6 @@
 class Solution {
 public:
+
     bool hasValidPath(vector<vector<int>>& grid) {
         int m = grid.size();
         int n = grid[0].size();
