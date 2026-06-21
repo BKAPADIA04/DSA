@@ -1,0 +1,39 @@
+#define ll long long
+class Solution {
+public:
+    long long finishTime(int n, vector<vector<int>>& edges, vector<int>& baseTime) {
+        // vector<vector<int>>adj(n);
+        vector<ll>indegree(n);
+        vector<ll>par(n,-1);
+
+        for(auto it : edges) {
+            ll u = it[0]; ll v = it[1];
+            par[v] = u;
+            indegree[u]++;
+        }
+
+        vector<ll>maxi(n, 0); vector<ll>mini(n, LLONG_MAX);
+        vector<ll>finish(n,0);
+        queue<ll>q;
+        unordered_set<ll>leaf;
+        for(ll i = 0;i < n;i++) {
+            if(indegree[i] == 0) { q.push(i); maxi[i] = mini[i] = baseTime[i]; leaf.insert(i); }
+        }
+
+        while(!q.empty()) {
+            ll node = q.front(); q.pop();
+            ll ownDuration = maxi[node] - mini[node] + baseTime[node];
+            ll finishTime = ownDuration;
+            if(leaf.find(node) == leaf.end()) finishTime += (ll)maxi[node];
+            finish[node] = max(finish[node], finishTime);
+            
+            if(par[node] == -1) continue;
+            maxi[par[node]] = max(maxi[par[node]], finishTime);
+            mini[par[node]] = min(mini[par[node]], finishTime);
+            indegree[par[node]]--;
+            if(indegree[par[node]] == 0) q.push(par[node]);
+        }
+
+        return finish[0];
+    }
+};
